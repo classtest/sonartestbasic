@@ -59,6 +59,7 @@
                 <pathelement location="${java.classes.dir}"/>
                 <pathelement location="${test.classes.dir}"/>
                 <pathelement path="lib/junit-4.10.jar"/>
+				<pathelement location="lib/jacocoant.jar"/>
             </classpath>
         </junit>
 	</jacoco:coverage>
