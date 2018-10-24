@@ -18,8 +18,6 @@
 		<mkdir dir="${java.classes.dir}"/>
 		<mkdir dir="${test.classes.dir}"/>
 		<mkdir dir="${junit.report.dir}"/>
-		<mkdir dir="${junit.report.dir}/html"/>
-		<mkdir dir="${junit.report.dir}/jacoco"/>
 	</target>
 
 	<target name="compile.java">
@@ -51,22 +49,9 @@
                 <pathelement location="${java.classes.dir}"/>
                 <pathelement location="${test.classes.dir}"/>
                 <pathelement path="lib/junit-4.10.jar"/>
-				<pathelement location="lib/jacocoant.jar"/>
             </classpath>
         </junit>
     </target>
-	
-	
-	<target name="junit.report">
-  
-        <junitreport todir="${junit.report.dir}">
-            <fileset dir="${junit.report.dir}">
-                <include name="TEST-*.xml"/>
-            </fileset>
-            <report todir="${junit.report.dir}/html"/>
-        </junitreport>
-    </target>
-	
 	
 	<target name="all" depends="clean, init, compile.java, compile.test, junit.test"/>
 
