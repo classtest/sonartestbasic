@@ -38,7 +38,7 @@
 	
 	<target name="junit.test">
      
-        <junit printsummary="yes" haltonerror="yes" haltonfailure="yes" fork="true">
+        <junit printsummary="yes" haltonerror="no" haltonfailure="no" fork="true">
             <formatter type="xml"/>
             <batchtest todir="${junit.report.dir}">
                 <fileset dir="${src.test.dir}">
