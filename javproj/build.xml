@@ -48,7 +48,7 @@
 	<target name="junit.test">
      
 	<jacoco:coverage destfile="${jacoco.report.dir}/jacoco.exec" xmlns:jacoco="antlib:org.jacoco.ant">
-        <junit printsummary="yes" haltonerror="yes" haltonfailure="yes">
+        <junit printsummary="yes" haltonerror="yes" haltonfailure="yes" fork="true">
             <formatter type="xml"/>
             <batchtest todir="${junit.report.dir}">
                 <fileset dir="${src.test.dir}">
