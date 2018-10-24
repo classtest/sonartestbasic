@@ -1,13 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project name="javproj" default="all" basedir=".">
 
+
+	<taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
+        <classpath path="lib/jacocoant.jar"/>
+	</taskdef>
+
+
+
 	<property name="src.java.dir" value="src/java"/>
 	<property name="src.test.dir" value="src/test"/>
 	<property name="build.dir" value="target"/>
 	<property name="java.classes.dir" value="${build.dir}/java/classes"/>
 	<property name="test.classes.dir" value="${build.dir}/test/classes"/>
 	<property name="junit.report.dir" value="${build.dir}/reports"/>
-	
+	<property name="jacoco.report.dir" value="${junit.report.dir}/jacoco"/>
 	
 	<target name="clean">
 		<delete dir="${build.dir}"/>
@@ -19,6 +26,7 @@
 		<mkdir dir="${test.classes.dir}"/>
 		<mkdir dir="${junit.report.dir}"/>
 		<mkdir dir="${junit.report.dir}/html"/>
+		<mkdir dir="${junit.report.dir}/jacoco"/>
 	</target>
 
 	<target name="compile.java">
@@ -39,6 +47,7 @@
 	
 	<target name="junit.test">
      
+	<jacoco:coverage destfile="${jacoco.report.dir}/jacoco.exec" xmlns:jacoco="antlib:org.jacoco.ant">
         <junit printsummary="yes" haltonerror="yes" haltonfailure="yes">
             <formatter type="xml"/>
             <batchtest todir="${junit.report.dir}">
@@ -52,6 +61,7 @@
                 <pathelement path="lib/junit-4.10.jar"/>
             </classpath>
         </junit>
+	</jacoco:coverage>
     </target>
 	
 	
